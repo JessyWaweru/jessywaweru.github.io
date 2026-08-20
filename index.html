@@ -14,7 +14,7 @@
   --void:    #04050D;
   --teal:    #00D4B8;
   --gold:    #FFB547;
-  --rose:    #FF6B9D;
+  --rose:    #F43F5E;
   --indigo:  #6366F1;
   --ice:     #E8F4FF;
   --dim:     rgba(232,244,255,0.35);
@@ -56,6 +56,14 @@ html,body{
   font-size:clamp(10px,1vw,12px);
   color:var(--teal);
   letter-spacing:.08em;
+  margin-top:4px;
+  opacity:.8;
+}
+#hud-subrole{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(9px,0.9vw,11px);
+  color:var(--dim);
+  letter-spacing:.06em;
   margin-top:4px;
   opacity:.8;
 }
@@ -320,7 +328,8 @@ html,body{
 <div id="hud">
   <div>
     <div id="hud-name">Jessy Bryan Waweru</div>
-    <div id="hud-role">full-stack engineer · actuarial scientist</div>
+    <div id="hud-role">Actuarial Scientist & Full-Stack Engineer</div>
+    <div id="hud-subrole">Inclusive Insurance & Social Protection</div>
   </div>
   <div id="hud-right">
     <div>nairobi, kenya</div>
@@ -362,7 +371,7 @@ const PROJECTS = [
     tag:"Healthcare · Full-Stack",
     color:"#00D4B8",
     stack:["Django","React","TypeScript","JWT + OTP","Supabase","Render"],
-    desc:"Doctor discovery and review platform for Kenya. Patients find, rate, and save trusted specialists across Nairobi, Kisumu, and Mombasa — powered by OTP-verified auth, a merit-based ranking engine, and real-time debounced search.",
+    desc:"Doctor discovery and review platform aggregating community-driven patient ratings across Nairobi, Kisumu, and Mombasa. Powered by OTP-verified auth and a merit-based dynamic ranking engine.",
     live:"https://docrank.jbnmedia.org",
     frontend:"https://github.com/JessyWaweru/DOCTOR_SEARCH_FRONTEND",
     backend:"https://github.com/JessyWaweru/DOCTOR_SEARCH_BACKEND",
@@ -371,8 +380,8 @@ const PROJECTS = [
     name:"ShopCrawl",
     tag:"AI · Price Intelligence",
     color:"#FFB547",
-    stack:["Django","React.js","Web Crawler","JWT","Render"],
-    desc:"AI price comparison engine crawling Amazon and Jumia in real time. Applies actuarial Cost-Benefit and Marginal Benefit ratios to rank deals — turning raw e-commerce data into consumer utility scores.",
+    stack:["Django","React.js","Web Crawler","Expected Utility Theory","Render"],
+    desc:"AI-powered product price comparison platform extended with a custom actuarial SmartRank™ engine. Applies expected utility theory, VaR/CVaR, and historical simulation to frame true product affordability.",
     live:"https://shopcrawl-frontend.onrender.com",
     frontend:"https://github.com/JessyWaweru/SHOPCRAWL-FRONTEND",
     backend:"https://github.com/JessyWaweru/SHOPCRAWL-BACKEND-PY",
@@ -382,7 +391,7 @@ const PROJECTS = [
     tag:"Entertainment · Aggregation",
     color:"#A78BFA",
     stack:["Django","React","TypeScript","Cloudscraper","Clerk","shadcn/ui"],
-    desc:"Cinema aggregator for Nairobi that bypasses Cloudflare enterprise bot protection. Deeply nested DRF serializers deliver Events → Cinemas → Showtimes in single-payload REST endpoints.",
+    desc:"Cinema aggregator combining an automated resilient web-scraping pipeline (bypassing Cloudflare protection) with user-managed event CRUD systems across Nairobi.",
     live:"https://tamasha.onrender.com",
     frontend:"https://github.com/JessyWaweru/TAMASHA-FRONTEND",
     backend:"https://github.com/JessyWaweru/TAMASHA-BACKEND",
@@ -392,7 +401,7 @@ const PROJECTS = [
     tag:"SaaS · Client Management",
     color:"#60A5FA",
     stack:["Django","React","TypeScript","JWT","Framer Motion","GitHub Pages"],
-    desc:"Private client relationship manager with multi-currency project tracking (USD, KES, EUR, GBP). Object-level JWT isolation means your data is completely invisible to every other user at the API level.",
+    desc:"Private client relationship manager with multi-currency project tracking (USD, KES, EUR, GBP). Object-level data isolation via custom Django IsOwner permission classes ensures absolute data privacy.",
     live:"https://jessywaweru.github.io/freelancer-crm-ui/",
     frontend:"https://github.com/JessyWaweru/freelancer-crm-ui",
     backend:"https://github.com/JessyWaweru/FREELANCER_CRM",
@@ -402,11 +411,21 @@ const PROJECTS = [
     tag:"Actuarial · Python CLI",
     color:"#FB7185",
     stack:["Python","Monte Carlo","VaR / TVaR","ARIMA","NumPy","Matplotlib"],
-    desc:"Modular CLI toolkit for core insurance analytics — premium pricing, stochastic loss simulation across four distributions, reinsurance excess-of-loss pricing, and configurable VaR/TVaR risk metrics.",
+    desc:"Modular actuarial pricing engine for insurance analytics. Handles premium calculation, stochastic simulation across normal and lognormal distributions, and excess-of-loss reinsurance pricing via CLI.",
     live:null,
     frontend:null,
     backend:"https://github.com/JessyWaweru/ACTUARIAL_RISK_MODEL",
   },
+  {
+    name:"SHIF Transition",
+    tag:"Actuarial Research",
+    color:"#F43F5E",
+    stack:["R","ARIMA","Logistic Regression","APPM Framework","React Deck"],
+    desc:"Primary research evaluating Kenya's NHIF to SHIF transition. Built binomial logistic regression & ARIMA(0,1,0) models proving 98.2% default probability for the lowest income tier, proposing the APPM framework to restore fund solvency.",
+    live:null,
+    frontend:null,
+    backend:null,
+  }
 ];
 
 // ── NEBULA PARTICLE SYSTEM ────────────────────────────────
@@ -431,11 +450,12 @@ function resize(){
 function placeNodes(){
   const iw = innerWidth, ih = innerHeight;
   const positions = [
-    {x: iw*.22, y: ih*.38},
-    {x: iw*.72, y: ih*.28},
-    {x: iw*.55, y: ih*.65},
-    {x: iw*.30, y: ih*.68},
-    {x: iw*.78, y: ih*.62},
+    {x: iw*.22, y: ih*.38}, // DocRank
+    {x: iw*.72, y: ih*.28}, // ShopCrawl
+    {x: iw*.55, y: ih*.65}, // Tamasha
+    {x: iw*.30, y: ih*.68}, // Freelancer
+    {x: iw*.78, y: ih*.62}, // Actuarial Risk
+    {x: iw*.48, y: ih*.38}, // SHIF Transition (Central Top)
   ];
   nodes = PROJECTS.map((p,i)=>({
     ...p,
