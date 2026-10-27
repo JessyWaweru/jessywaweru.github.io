@@ -30,4 +30,6 @@ npm run dev        # → http://localhost:5173
 npm run build      # → dist/
 ```
 
-Every push to `main` builds and deploys to GitHub Pages via [GitHub Actions](.github/workflows/deploy.yml).
+```bash
+npm run deploy     # builds and publishes dist/ to the gh-pages branch
+```
