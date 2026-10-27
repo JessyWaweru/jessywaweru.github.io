@@ -20,11 +20,29 @@ export type Project = {
   hook: string;
   tags: string[];
   image?: string;
+  phone?: boolean;
   accent: string;
   links: ProjectLink[];
 };
 
 export const PROJECTS: Project[] = [
+  {
+    name: 'GoHerbal',
+    emoji: '🌿',
+    kicker: 'Client work · in production',
+    blurb:
+      'A live herbal shop for a Kenyan client: M-Pesa STK push and card checkout via Paystack, map-priced rider delivery, order tracking, plain-language symptom search and paid consultations.',
+    hook: 'Payments are confirmed by HMAC-verified webhooks with idempotent, row-locked fulfilment, so a double tap can never charge a customer twice. 170+ backend tests.',
+    tags: ['Django 6', 'DRF', 'Paystack · M-Pesa', 'React 19', 'TanStack Query', 'Leaflet'],
+    image: '/shots/goherbal.webp',
+    phone: true,
+    accent: 'rgba(74, 222, 128, 0.35)',
+    links: [
+      { label: 'Live', href: 'https://goherbal.health' },
+      { label: 'API', href: `${GH}/goherbal-shop` },
+      { label: 'Storefront', href: `${GH}/herb-root-frontend` },
+    ],
+  },
   {
     name: 'ShopCrawl',
     emoji: '🛍️',
@@ -106,7 +124,7 @@ export const PROJECTS: Project[] = [
 ];
 
 export const STATS = [
-  { to: 5, suffix: '', label: 'full-stack apps built' },
+  { to: 6, suffix: '', label: 'full-stack apps built' },
   { to: 101, suffix: '', label: 'passing tests in my risk engine' },
   { to: 11, suffix: '', label: 'actuarial models behind one API' },
   { to: 28, suffix: '', label: 'slides in an interactive thesis deck' },
@@ -117,5 +135,5 @@ export const STACK: { group: string; items: string[] }[] = [
   { group: 'Backend', items: ['Django', 'Django REST Framework', 'FastAPI', 'JWT', 'Clerk'] },
   { group: 'Frontend', items: ['React', 'Vite', 'Tailwind CSS', 'shadcn/ui', 'Framer Motion'] },
   { group: 'Actuarial & data', items: ['Monte Carlo', 'VaR / TVaR', 'ARIMA', 'Chain ladder', 'EVT', 'NumPy', 'SciPy', 'pandas'] },
-  { group: 'Data & deploy', items: ['PostgreSQL', 'Supabase', 'Render', 'GitHub Pages', 'pytest'] },
+  { group: 'Data & deploy', items: ['PostgreSQL', 'Supabase', 'Render', 'GitHub Pages', 'pytest', 'Paystack', 'M-Pesa', 'Resend'] },
 ];

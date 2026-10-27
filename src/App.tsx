@@ -148,7 +148,16 @@ function ProjectCard({ project, wide }: { project: Project; wide?: boolean }) {
   return (
     <SpotlightCard spotlightColor={project.accent} className={`group flex h-full flex-col border border-line p-0! ${wide ? 'md:col-span-2' : ''}`}>
       <div className={`relative overflow-hidden border-b border-line ${wide ? 'aspect-[21/9]' : 'aspect-[16/9]'}`}>
-        {project.image ? (
+        {project.image && project.phone ? (
+          <div className="grid size-full place-items-center bg-[radial-gradient(circle_at_20%_30%,rgba(74,222,128,0.28),transparent_55%),radial-gradient(circle_at_85%_75%,rgba(94,234,212,0.2),transparent_50%)]">
+            <img
+              src={project.image}
+              alt={`${project.name} mobile checkout`}
+              loading="lazy"
+              className="h-[88%] rounded-[1.4rem] border-4 border-zinc-800 shadow-2xl shadow-black/60 transition duration-500 group-hover:-translate-y-1 group-hover:rotate-[-2deg]"
+            />
+          </div>
+        ) : project.image ? (
           <img
             src={project.image}
             alt={`${project.name} screenshot`}
@@ -276,7 +285,7 @@ export default function App() {
         <Section id="work" eyebrow="02 · Selected work" title="Things I’ve built" intro="Each one is full-stack, deployed and documented. Free-tier hosting: live demos may take ~45s to wake up.">
           <div className="grid gap-6 md:grid-cols-2">
             {PROJECTS.map((p, i) => (
-              <ProjectCard key={p.name} project={p} wide={i === PROJECTS.length - 1} />
+              <ProjectCard key={p.name} project={p} wide={i === 0 || i === PROJECTS.length - 1} />
             ))}
           </div>
         </Section>
