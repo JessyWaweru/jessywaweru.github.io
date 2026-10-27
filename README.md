@@ -4,16 +4,30 @@
 
 ### Actuarial scientist × full-stack engineer: the portfolio.
 
-[![Visit](https://img.shields.io/badge/🌐_Visit-jessywaweru.github.io-2563EB?style=for-the-badge)](https://jessywaweru.github.io/)
+[![Visit](https://img.shields.io/badge/🌐_Visit-jessywaweru.github.io-5eead4?style=for-the-badge&labelColor=07070c)](https://jessywaweru.github.io/)
+
+![React](https://img.shields.io/badge/React_19-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind 4](https://img.shields.io/badge/Tailwind_4-06B6D4?logo=tailwindcss&logoColor=white)
+![React Bits](https://img.shields.io/badge/React_Bits-000000?logo=react&logoColor=white)
 
 </div>
 
-A single, dependency-free HTML page (no framework, no build step, loads instantly ⚡) showcasing:
+## ✨ What's inside
 
-- 📑 **Coverage Gaps in SHIF**: an actuarial case study of Kenya's Social Health Insurance Fund, with the [full PDF report](SHIF-Coverage-Gaps-Case-Study.pdf.pdf), an [interactive deck](https://jessywaweru.github.io/FINAL-YR-PRESENTATION/) and the [R models](https://github.com/JessyWaweru/actuarial-models-in-r)
-- 🛍️ [ShopCrawl](https://github.com/JessyWaweru/shopcrawl-api): risk-adjusted price comparison
-- 🩺 [DocRank](https://github.com/JessyWaweru/docrank-api): community-rated doctor directory
-- 📊 [Actuarial Risk Engine](https://github.com/JessyWaweru/actuarial-risk-engine): pricing, reserving and tail risk, as an API
-- 💼 [Freelancer CRM](https://github.com/JessyWaweru/freelancer-crm-api): multi-currency, multi-tenant CRM
+- 🌌 **Aurora** WebGL hero and **DecryptedText** title reveal ([React Bits](https://reactbits.dev))
+- 🎲 **A live Monte Carlo simulator**: tweak claim frequency, severity and volatility, simulate 10,000 years of losses in the browser, and watch VaR95 / VaR99 / TVaR99 update as the histogram fills
+- 🔦 **SpotlightCard** project tiles and **CountUp** stats
+- 📑 The SHIF research case study, with [PDF](public/SHIF-Coverage-Gaps-Case-Study.pdf.pdf), [interactive deck](https://jessywaweru.github.io/FINAL-YR-PRESENTATION/) and [R models](https://github.com/JessyWaweru/actuarial-models-in-r)
+- ♿ Every animation respects `prefers-reduced-motion`
 
-Hosted on GitHub Pages straight from `main`.
+## 🚀 Run it
+
+```bash
+npm install
+npm run dev        # → http://localhost:5173
+npm run build      # → dist/
+```
+
+Every push to `main` builds and deploys to GitHub Pages via [GitHub Actions](.github/workflows/deploy.yml).

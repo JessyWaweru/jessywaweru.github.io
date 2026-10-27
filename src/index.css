@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-ink: #07070c;
+  --color-panel: #0e0e16;
+  --color-line: #1f1f2e;
+  --color-mint: #5eead4;
+  --color-violet: #a78bfa;
+  --color-sky: #60a5fa;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-ink font-sans text-zinc-300 antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-mint) 35%, transparent);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
